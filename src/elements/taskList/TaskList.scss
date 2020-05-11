@@ -1,0 +1,28 @@
+.list-group {
+    .list-group-item {
+        line-height: 20px;
+
+        &:hover {
+            background-color: darken($color: #fafafa, $amount: 5);
+        }
+
+        &:not(:first-child)
+        {
+            border-top: 1px solid rgba(0,0,0,.125);;
+        }
+
+        .fas.fa-times, .fas.fa-check {
+            margin-top: 1px;
+            cursor: pointer;
+            font-size: 18px;
+            &:hover {
+                color: red;
+            }
+        }
+        .fas.fa-times {
+            margin-right: 15px;
+            font-size: 20px;
+
+        }
+    }
+}

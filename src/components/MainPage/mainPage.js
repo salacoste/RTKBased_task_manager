@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import logo from '../../logo.svg'
 import {Counter} from '../../features/counter/Counter'
 import Form from '@/elements/form/Form'
@@ -11,6 +11,8 @@ import 'shards-ui/dist/css/shards.min.css'
 
 
 const MainPage = () => {
+
+  const [editMode, setEditMode] = useState(false)
 
   return (
     <Container fluid>
@@ -25,15 +27,15 @@ const MainPage = () => {
         </Col>
       </Row>
       <Row>
-        <Col sm={{size: 10, offset:2 }}>
-          <Form />
+        <Col sm={{size: 10, offset:1 }}>
+          <Form editMode= {editMode} setEditMode = {setEditMode} />
         </Col>
       </Row>
-      <Row className='mt-5'>
-        <Col sm={{size: 10, offset:2 }}>
-          <TaskList />
-        </Col>
-      </Row>
+        <Row className='mt-5'>
+          <Col sm={{size: 10, offset:1 }} >
+            <TaskList editMode= {editMode} setEditMode = {setEditMode}/>
+          </Col>
+        </Row>
     </Container>
   )
   // return (

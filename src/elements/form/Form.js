@@ -19,11 +19,20 @@ export default () => {
 
 
     return (
-        <Form inline>
-            <FormGroup sm='12'>
-                <label htmlFor="#task" className='mr-3'>Task</label>
+        <Form >
+            <FormGroup sm='12' lg='8'>
+                <label htmlFor="#task" className='mr-3 display-5'>Task</label>
                 <InputGroup>
                     <FormInput placeholder="enter new task" onChange = {onChangeHandler} value={text}/>
+                    <InputGroupAddon type="append">
+                    <Button theme="secondary" onClick={onClickHandler}>Add</Button>
+                    </InputGroupAddon>
+                </InputGroup>
+            </FormGroup>
+            <FormGroup sm='12' lg='8'>
+                <label htmlFor="#edit" className='mr-3 display-5'>Edit mode:</label>
+                <InputGroup>
+                    <FormInput placeholder="Edit the task" onChange = {onChangeHandler} value={text}/>
                     <InputGroupAddon type="append">
                     <Button theme="secondary" onClick={onClickHandler}>Add</Button>
                     </InputGroupAddon>

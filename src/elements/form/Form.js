@@ -1,4 +1,4 @@
-import React, {Fragment, useState,  } from 'react'
+import React, {Fragment, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Form, FormInput, FormGroup, InputGroup, InputGroupAddon, InputGroupText, Button } from "shards-react";
 
@@ -16,8 +16,11 @@ export default ({refProp, editTodo, setEditTodo}) => {
     const isEditTodoId = useSelector(todoId)
     const todos = useSelector(selectTodos)
 
-    const todo = todos.find(t => t.id === isEditTodoId) || null
 
+
+    useEffect(()=>{
+        const todo = todos.find(t => t.id === isEditTodoId) || null
+    }, [todos])
 
     const onChangeHandler = (e) => {
         setText(e.target.value)

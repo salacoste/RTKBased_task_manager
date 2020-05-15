@@ -1,4 +1,4 @@
-import React, {Fragment, } from 'react'
+import React, {Fragment, useEffect, } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {ListGroup, ListGroupItem} from 'shards-react'
 
@@ -29,9 +29,11 @@ export default ({editMode, setEditMode, refProp})=> {
     const todos = useSelector(selectTodos)
     const selectIsEdit = useSelector(select)
     const isEditTodoId = useSelector(todoId)
+    let todo = todos.find(t => t.id === isEditTodoId) || null
 
-
-    const todo = todos.find(t => t.id === isEditTodoId) || null
+    useEffect(()=>{
+        todo = todos.find(t => t.id === isEditTodoId) || null
+    }, [todos])
 
     const dispatch = useDispatch()
 
@@ -50,8 +52,9 @@ export default ({editMode, setEditMode, refProp})=> {
 
     const editTodoHandler = async (id) => {
         await dispatch(toggleEdit(id))
-        console.log('111', refProp.current.value)
-        await todo && (refProp.current.value = todo["Field description"])
+        console.log('111', refProp.current)
+        console.log(todo)
+        // refProp.current.value = todo["Field description"]
         refProp.current.focus()
         // refProp.current.value = todo.
 
